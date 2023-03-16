@@ -20,7 +20,8 @@ public class socioController {
         daoSocio.registrarSocio(socio);
     }
     @RequestMapping(value ="api/usuarios/{id}", method = RequestMethod.DELETE)
-    public void eliminar(@PathVariable int id){
+    public void eliminarSocio(@PathVariable int id){
         daoSocio.eliminarSocio(id);
     }
+
 }
