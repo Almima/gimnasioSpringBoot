@@ -11,9 +11,9 @@ import java.time.LocalDate;
 @Table(name = "socio")
 public class Socio {
     @Id
-    @SequenceGenerator(name="SOCIO_ID_GENERATOR", sequenceName="SEQ_SOCIO_ID",allocationSize=1)
+    @SequenceGenerator(name="SOCIO_ID_GENERATOR", sequenceName="seq_socio_id",allocationSize=1)
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SOCIO_ID_GENERATOR")
-    @Column(name = "id", nullable = false)
+    @Column(name = "socio_id", nullable = false)
     private Integer id;
 
     @Setter @Getter @Column(name = "codbarras", length = 7)
