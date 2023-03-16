@@ -22,7 +22,7 @@ public class DaoIntructorImp implements DaoInstructor{
 
     @Override
     public void registraInstructor(@RequestBody Instructor instructor) {
-        TipoActividad tipoActividad = TipoActividad.getId();
+        TipoActividad tipoActividad = new TipoActividad();
         instructor.setTipoActividad(tipoActividad);
         entityManager.merge(instructor);
     }
