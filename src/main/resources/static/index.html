@@ -30,11 +30,13 @@
                    id="txtRepeatPassword" placeholder="Repeat Password">
         </div>
     </div>
-    <button onclick="registrarUsuarios()">Añadir</button>
+    <button onclick="registrarInstructor()">Añadir</button>
 </form>
 <form>
     <input type="number" id="id">
     <button onclick="eliminarUsuario()">Al Gulag</button>
+    <button onclick="eliminarInstructor()">Pal Lobby</button>
+    <button onclick="registrarSocio()">Te añado sosio</button>
 </form>
 <script type="text/javascript">
     let contador = 5;
@@ -57,17 +59,49 @@
             }
         });
         location.reload();
-        console.log(id)
     }
-    async function registrarUsuarios(){
+    async function eliminarInstructor(){
+        const id = document.getElementById('id').value;
+        if(!confirm("Desea eliminar este usuario?")){
+            return;
+        }
+        const request = await fetch('http://localhost:8080/api/instructor/'+id, {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
+        location.reload();
+    }
+    async function registrarInstructor(){
         let datos={}
         datos.nombreInstructor = "David";
+        datos.tipoActividad = {
+            id: 1,
+            nombreActividad: "Pesitas",
+            descripcion: "Pa ponernos mas fuertes que el vinagre",
+        };
 
-        fetch('http://localhost:8080/api/registraInstructor', {
+        await fetch('api/registraInstructor', {
             method: 'POST',
             headers: getHeaders(),
             body: JSON.stringify(datos)
         });
+    }
+    async function registrarSocio(){
+        let datos={}
+        datos.nombre = "Alvarito";
+        datos.email = "alvarito845@minabo.com";
+        datos.apellidos = "845";
+        datos.telefono = "6464646464";
+        datos.clave = "loscuernosdetumadre";
+
+        await fetch('api/registraSocio', {
+            method: 'POST',
+            headers: getHeaders(),
+            body: JSON.stringify(datos)
+        }).catch(error => console.error(error));
     }
 </script>
 </body>

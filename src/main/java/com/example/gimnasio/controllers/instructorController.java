@@ -1,7 +1,9 @@
 package com.example.gimnasio.controllers;
 
 import com.example.gimnasio.dao.DaoInstructor;
+import com.example.gimnasio.dao.DaoTipoActividad;
 import com.example.gimnasio.entidades.Instructor;
+import com.example.gimnasio.entidades.TipoActividad;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,6 +11,8 @@ import java.util.List;
 
 @RestController
 public class instructorController {
+    @Autowired
+    private DaoTipoActividad daoTipoActividad;
     @Autowired
     private DaoInstructor daoInstructor;
     @RequestMapping(value = "api/getInstructores", method = RequestMethod.GET)
