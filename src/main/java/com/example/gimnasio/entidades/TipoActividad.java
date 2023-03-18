@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class TipoActividad {
     @Id
     @Column(name = "id", nullable = false)
-    private Integer id;
+    private Long id;
 
     @Column(name = "nombre_actividad", nullable = false, length = 50)
     private String nombreActividad;
@@ -18,11 +18,11 @@ public class TipoActividad {
     @Column(name = "descripcion", nullable = false, length = 500)
     private String descripcion;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
