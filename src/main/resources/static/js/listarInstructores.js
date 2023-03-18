@@ -26,8 +26,8 @@ async function cargarInstructor(){
             respuesta.map((instructor) => {
                 botonEliminar = '<button onclick="eliminarSocio('+ instructor.id +')" class="btn FondoRojo btn-circle btn-sm">Eliminar</button>'
                 console.log(instructor.id);
-                let instructorHtml = '<tr><td id="id">'+ instructor.id +'</td><td>'+ instructor.nombre +'</td><td>'
-                    + instructor.ACTIVIDAD+
+                let instructorHtml = '<tr><td id="id">'+ instructor.id +'</td><td>'+ instructor.nombreInstructor +'</td><td>'
+                    + instructor.tipoActividad.nombreActividad+
                     '</td> <td>'+botonEliminar+'</td></tr>';
                 listadoHtml += instructorHtml;
             })
