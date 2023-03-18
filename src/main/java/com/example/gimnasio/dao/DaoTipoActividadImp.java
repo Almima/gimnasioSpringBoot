@@ -1,10 +1,15 @@
 package com.example.gimnasio.dao;
 
+import com.example.gimnasio.entidades.Instructor;
 import com.example.gimnasio.entidades.TipoActividad;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.Optional;
 
 public class DaoTipoActividadImp implements DaoTipoActividad{
+    @PersistenceContext
+    EntityManager entityManager;
     @Override
     public <S extends TipoActividad> S save(S entity) {
         return null;
