@@ -22,27 +22,26 @@ async function cargarSocio(){
         .then(respuesta => {
             console.log(respuesta);
             let listadoHtml = '';
-            for (let socio in respuesta) {
-                //let botonEliminar = '<a href="#" onclick="eliminarSocio('+ socio.id +')" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i> </a>'
-                console.log(socio);
+            respuesta.map((socio) => {
+                botonEliminar = '<button onclick="eliminarSocio('+ socio.id +')" class="btn btn-danger btn-circle btn-sm">Eliminar</button>'
+                console.log(socio.id);
                 let telefonoTexto = socio.telefono == null ? '-' : socio.telefono;
-                let socioHtml = '<tr><td>'+ socio.id +'</td><td>'+ socio.nombre +' '+ socio.apellidos +'</td><td>'
-                    + socio.email+'</td> <td>'+ telefonoTexto
-                    + '</td><td>';
+                let socioHtml = '<tr><td id="id">'+ socio.id +'</td><td>'+ socio.nombre +' '+ socio.apellidos +'</td><td>'
+                    + socio.email+'</td><td>'+ telefonoTexto
+                    + '</td> <td>'+botonEliminar+'</td></tr>';
                 listadoHtml += socioHtml;
-            }
+            })
             document.querySelector('#socios tbody').outerHTML = listadoHtml;
         })
         .catch(error => console.error(error));
 
 }
 
-async function eliminarSocio(){
-        const id = document.getElementById('id').value;
+async function eliminarSocio(id){
         if(!confirm("Desea eliminar este socio?")){
             return;
         }
-        const request = await fetch('http://localhost:8080/api/getUsuarios'+id, {
+        const request = await fetch('http://localhost:8080/api/usuarios/'+id, {
             method: 'DELETE',
             headers: getHeaders(),
 
