@@ -10,4 +10,7 @@ public interface DaoSocio {
 
     void registrarSocio(Socio socio);
     void modificaSocio(Socio socio);
+    Socio obtenerSocioPorCredenciales(Socio socio);
+
+
 }
