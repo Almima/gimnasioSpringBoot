@@ -28,6 +28,7 @@ async function registrarInstructor() {
         fetchRegistro(datos);
     })
         .catch(error => console.error(error));
+    location.reload();
 }
 async function fetchRegistro(datos){
     await fetch('api/registraInstructor', {

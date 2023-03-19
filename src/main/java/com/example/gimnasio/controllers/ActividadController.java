@@ -1,7 +1,6 @@
 package com.example.gimnasio.controllers;
 
 import com.example.gimnasio.dao.DaoTipoActividad;
-import com.example.gimnasio.entidades.Instructor;
 import com.example.gimnasio.entidades.TipoActividad;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +22,8 @@ public class ActividadController {
         return daoTipoActividad.findAll();
     }
     @RequestMapping(value = "api/registraActividad", method = RequestMethod.POST)
-    public void registraActividad(@RequestBody TipoActividad tipoActividad){
+    public void registrarActividad(@RequestBody TipoActividad tipoActividad){
+        daoTipoActividad.save(tipoActividad);
     }
     @RequestMapping(value = "api/eliminaActividadById/{id}", method = RequestMethod.DELETE)
     public void  eliminaActividadById(@PathVariable Long id){

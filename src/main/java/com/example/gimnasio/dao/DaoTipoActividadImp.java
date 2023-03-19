@@ -2,6 +2,7 @@ package com.example.gimnasio.dao;
 
 import com.example.gimnasio.entidades.Instructor;
 import com.example.gimnasio.entidades.TipoActividad;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -69,4 +70,5 @@ public class DaoTipoActividadImp implements DaoTipoActividad{
     public void deleteAll() {
 
     }
+
 }
