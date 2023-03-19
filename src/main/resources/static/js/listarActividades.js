@@ -23,9 +23,10 @@ async function cargarActividad(){
             console.log(respuesta);
             let listadoHtml = '';
             respuesta.map((actividad) => {
-                botonEliminar = '<button onclick="eliminarSocio('+ actividad.id +')" class="btn FondoVerde btn-circle btn-sm">Eliminar</button>'
-                console.log(actividad.id);
-                let actividadHtml = '<tr><td id="id">'+ actividad.id +'</td><td>'+ actividad.nombre +'</td><td>'
+                console.log(actividad.id)
+                botonEliminar = '<button onclick="eliminarActividad('+ actividad.id +')" class="btn FondoVerde btn-circle btn-sm">Eliminar</button>'
+                console.log(actividad.nombreActividad);
+                let actividadHtml = '<tr><td id="id">'+ actividad.id +'</td><td>'+ actividad.nombreActividad +'</td><td>'
                     + actividad.descripcion+
                     '</td> <td>'+botonEliminar+'</td></tr>';
                 listadoHtml += actividadHtml;
@@ -34,4 +35,16 @@ async function cargarActividad(){
         })
         .catch(error => console.error(error));
 
+}
+async function eliminarActividad(id){
+    console.log(id)
+    if(!confirm("Desea eliminar este socio?")){
+        return;
+    }
+    const request = await fetch(`http://localhost:8080/api/eliminaActividadById/${id}`, {
+        method: 'DELETE',
+        headers: getHeaders(),
+
+    });
+    location.reload();
 }

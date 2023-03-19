@@ -24,7 +24,7 @@ async function cargarInstructor(){
             console.log(respuesta);
             let listadoHtml = '';
             respuesta.map((instructor) => {
-                botonEliminar = '<button onclick="eliminarSocio('+ instructor.id +')" class="btn FondoRojo btn-circle btn-sm">Eliminar</button>'
+                botonEliminar = '<button onclick="eliminarInstructor('+ instructor.id +')" class="btn FondoRojo btn-circle btn-sm">Eliminar</button>'
                 console.log(instructor.id);
                 let instructorHtml = '<tr><td id="id">'+ instructor.id +'</td><td>'+ instructor.nombreInstructor +'</td><td>'
                     + instructor.tipoActividad.nombreActividad+
@@ -36,4 +36,14 @@ async function cargarInstructor(){
         .catch(error => console.error(error));
 
 }
+async function eliminarInstructor(id){
+    if(!confirm("Desea eliminar este instructor?")){
+        return;
+    }
+    const request = await fetch('http://localhost:8080/api/instructor/'+id, {
+        method: 'DELETE',
+        headers: getHeaders(),
 
+    });
+    location.reload();
+}

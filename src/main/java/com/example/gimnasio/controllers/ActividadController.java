@@ -26,7 +26,7 @@ public class ActividadController {
     public void registraActividad(@RequestBody TipoActividad tipoActividad){
     }
     @RequestMapping(value = "api/eliminaActividadById/{id}", method = RequestMethod.DELETE)
-    public void  eliminaActividadById(Long id){
+    public void  eliminaActividadById(@PathVariable Long id){
         daoTipoActividad.deleteById(id);
     }
 }
